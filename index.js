@@ -12,6 +12,7 @@ function handleSubmit(ev){
   document.querySelector('p#blank').textContent = 'Hi, my name is ' + name + ', and I was born on ' + dob
   
   const favColorParagraph = document.querySelector('p#favColor')
+  favColorParagraph.textContent = favColor + ' is my favorite color'
   favColorParagraph.style.color = favColor;
   favColorParagraph.style.fontStyle = 'italic'
 }
