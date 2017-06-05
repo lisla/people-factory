@@ -18,7 +18,8 @@ function handleSubmit(ev){
 
   const d = document.querySelector('.special')
   d.style.borderColor = favColor
-  d.style.borderStyle = 'dashed'
+  d.style.borderStyle = 'dotted'
+  
 }
 
 personForm.addEventListener('submit', handleSubmit)
