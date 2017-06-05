@@ -15,6 +15,10 @@ function handleSubmit(ev){
   favColorParagraph.textContent = favColor + ' is my favorite color'
   favColorParagraph.style.color = favColor;
   favColorParagraph.style.fontStyle = 'italic'
+
+  const d = document.querySelector('.special')
+  d.style.borderColor = favColor
+  d.style.borderStyle = 'dashed'
 }
 
 personForm.addEventListener('submit', handleSubmit)
