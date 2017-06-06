@@ -5,53 +5,31 @@ function handleSubmit(ev){
   
   const details = document.querySelector('#details')
   const f = ev.target
-  const name = f.personName.value
-  const age = f.age.value
-  const favColor = f.personFavColor.value
 
-  const colorDiv = `
-    <div style="background-color: ${favColor}; width: 100px; height: 50px"></div>
-  `
-  
-  // document.querySelector('h1').textContent = name + ', Date of Birth: ' + dob
-  // document.querySelector('p#blank').textContent = 'Hi, my name is ' + name + ', and I was born on ' + dob
-  
-  // const favColorParagraph = document.querySelector('p#favColor')
-  // favColorParagraph.textContent = favColor + ' is my favorite color'
-  // favColorParagraph.style.color = favColor;
-  // favColorParagraph.style.fontStyle = 'italic'
+  const person = {
+    name: f.personName.value,
+    // Get HTML from colored div returned by renderColor 
+    favoriteColor: renderColor(f.personFavColor.value).outerHTML,
+    age: f.age.value,
+  }
 
-  // const d = document.querySelector('.special')
-  // d.style.borderColor = favColor
-  // d.style.borderStyle = 'dotted'
-  
-  // details.innerHTML = `<em>${name}</em>`
-
-  // const em = document.createElement('em')
-  // em.textContent = name
-  // details.appendChild(em)
-
-  // details.innerHTML = `
-  //   <ul>
-  //     <li>Name: ${name}</li>
-  //     <li>Favorite Color: ${colorDiv}</li>
-  //     <li>Age: ${age}</li>
-  //   </ul>
-  // `
-
-  const ul = document.createElement('ul')
-  details.appendChild(ul)
-
-  appendElement(ul, 'li', `Name: ${name}`)
-  appendElement(ul, 'li', `Favorite Color: ${renderColor(favColor).outerHTML}`)
-  appendElement(ul, 'li', `Age: ${age}`)
-
+  details.appendChild(renderList(person))
 }
 
-function appendElement(parent, childType, childContent){
-  const el = document.createElement(childType)
-  el.innerHTML = childContent
-  parent.appendChild(el)
+function renderList(personData){
+  const list = document.createElement('ul')
+  // Loop over ['name', 'favoriteColor', 'age']
+  Object.keys(personData).map(function(fieldName){
+    const li = renderListItem(fieldName, personData[fieldName])
+    list.appendChild(li)
+  })
+  return list
+}
+
+function renderListItem(fieldName, value){
+  const li = document.createElement('li')
+  li.innerHTML = `${fieldName}: ${value}`
+  return li
 }
 
 function renderColor(color){
