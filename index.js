@@ -12,7 +12,7 @@ function handleSubmit(ev){
   const colorDiv = `
     <div style="background-color: ${favColor}; width: 100px; height: 50px"></div>
   `
-
+  
   // document.querySelector('h1').textContent = name + ', Date of Birth: ' + dob
   // document.querySelector('p#blank').textContent = 'Hi, my name is ' + name + ', and I was born on ' + dob
   
@@ -31,13 +31,27 @@ function handleSubmit(ev){
   // em.textContent = name
   // details.appendChild(em)
 
-  details.innerHTML = `
-    <ul>
-      <li>Name: ${name}</li>
-      <li>Favorite Color: ${colorDiv}</li>
-      <li>Age: ${age}</li>
-    </ul>
-  `
+  // details.innerHTML = `
+  //   <ul>
+  //     <li>Name: ${name}</li>
+  //     <li>Favorite Color: ${colorDiv}</li>
+  //     <li>Age: ${age}</li>
+  //   </ul>
+  // `
+
+  const ul = document.createElement('ul')
+  details.appendChild(ul)
+
+  appendElement(ul, 'li', `Name: ${name}`)
+  appendElement(ul, 'li', `Favorite Color: ${colorDiv}`)
+  appendElement(ul, 'li', `Age: ${age}`)
+
+}
+
+function appendElement(parent, childType, childContent){
+  const el = document.createElement(childType)
+  el.innerHTML = childContent
+  parent.appendChild(el)
 }
 
 personForm.addEventListener('submit', handleSubmit)
