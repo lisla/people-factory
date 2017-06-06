@@ -21,7 +21,7 @@ function handleSubmit(ev){
   d.style.borderStyle = 'dotted'
   
   const details = document.querySelector('#details')
-  details.innerHTML = name
+  details.innerHTML = `<em>${name}</em>`
 }
 
 personForm.addEventListener('submit', handleSubmit)
