@@ -20,6 +20,8 @@ function handleSubmit(ev){
   d.style.borderColor = favColor
   d.style.borderStyle = 'dotted'
   
+  const details = document.querySelector('#details')
+  details.innerHTML = name
 }
 
 personForm.addEventListener('submit', handleSubmit)
