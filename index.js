@@ -43,7 +43,7 @@ function handleSubmit(ev){
   details.appendChild(ul)
 
   appendElement(ul, 'li', `Name: ${name}`)
-  appendElement(ul, 'li', `Favorite Color: ${colorDiv}`)
+  appendElement(ul, 'li', `Favorite Color: ${renderColor(favColor).outerHTML}`)
   appendElement(ul, 'li', `Age: ${age}`)
 
 }
@@ -52,6 +52,14 @@ function appendElement(parent, childType, childContent){
   const el = document.createElement(childType)
   el.innerHTML = childContent
   parent.appendChild(el)
+}
+
+function renderColor(color){
+  const colorDiv = document.createElement('div')
+  colorDiv.style.backgroundColor = color
+  colorDiv.style.width = '100px'
+  colorDiv.style.height = '50px'
+  return colorDiv
 }
 
 personForm.addEventListener('submit', handleSubmit)
