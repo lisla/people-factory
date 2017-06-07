@@ -1,4 +1,4 @@
-(function(){
+{
   const personForm = document.querySelector('form#personForm')
 
   function handleSubmit(ev){
@@ -42,8 +42,7 @@
   }
 
   personForm.addEventListener('submit', handleSubmit)
-})()
+}
 
-// IIFE (Immediately Invoked Function Expression)
-// Wrap entire file in a function and immediately invoke the function
-// This avoids Global Variables
+// Wrap everything in curly braces
+// const's only have scope within curly braces, so should avoid global variables
